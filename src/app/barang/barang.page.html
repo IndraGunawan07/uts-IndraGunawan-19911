@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="productsMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="isList()">
+        <ion-icon name="list-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="list">
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let barang of products" [routerLink]="['/barang', barang.merk]">
+          <ion-item>
+            <ion-avatar>
+              <ion-img [src]="barang.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-card-content>
+              <ion-card-title>{{ barang.merk + ' '  + barang.model }}</ion-card-title>
+              <ion-card-subtitle>Rp. {{ barang.harga }}</ion-card-subtitle>
+              <ion-card-subtitle>Tersedia: {{ barang.stok }}</ion-card-subtitle>
+            </ion-card-content>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid *ngIf="!list">
+    <ion-row>
+      <ion-col size="6" *ngFor="let barang of products" [routerLink]="['/barang', barang.merk]">
+        <ion-list>
+          <ion-item>
+            <ion-avatar>
+              <ion-img [src]="barang.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-card-content>
+              <ion-card-title>{{ barang.merk + ' '  + barang.model }}</ion-card-title>
+              <ion-card-subtitle>Rp. {{ barang.harga }}</ion-card-subtitle>
+              <ion-card-subtitle>Tersedia: {{ barang.stok }}</ion-card-subtitle>
+            </ion-card-content>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detail Product</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/barang"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="loadedProduct.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ loadedProduct.merk + ' ' + loadedProduct.model}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card-subtitle>Rp. {{ loadedProduct.harga }}</ion-card-subtitle>
+        <ion-card-subtitle>Tersedia: {{ loadedProduct.stok }}</ion-card-subtitle>
+      </ion-card-content>
+      <div *ngIf="loadedProduct.jenis == 'Processor'">
+        <ion-card-header>
+          <ion-card-title>Tentang Produk</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-subtitle>Base Clock: {{ loadedProduct.baseclock }}</ion-card-subtitle>
+          <ion-card-subtitle>Base Clock: {{ loadedProduct.boostclock }}</ion-card-subtitle>
+          <ion-card-subtitle>Core Count: {{ loadedProduct.corecount }}</ion-card-subtitle>
+          <ion-card-subtitle>Thread Count: {{ loadedProduct.threadcount }}</ion-card-subtitle>
+        </ion-card-content>
+      </div>
+      <div *ngIf="loadedProduct.jenis == 'RAM'">
+        <ion-card-header>
+          <ion-card-title>Tentang Produk</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-subtitle>Speed: {{ loadedProduct.speed }}</ion-card-subtitle>
+          <ion-card-subtitle>Ukuran: {{ loadedProduct.ukuran }}</ion-card-subtitle>
+        </ion-card-content>
+      </div>
+      <div *ngIf="loadedProduct.jenis == 'motherboard'">
+        <ion-card-header>
+          <ion-card-title>Tentang Produk</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-subtitle>Chipset: {{ loadedProduct.chipset }}</ion-card-subtitle>
+          <ion-card-subtitle>For brand: {{ loadedProduct.brand }}</ion-card-subtitle>
+        </ion-card-content>
+      </div>
+    </ion-card>
+  </ion-grid>
+</ion-content>

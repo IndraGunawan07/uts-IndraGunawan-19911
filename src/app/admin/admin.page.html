@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="productsMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/add-barang">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let barang of products" [routerLink]="['/admin', barang.merk]">
+          <ion-item-sliding #slidingItem>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="presentAlert(barang, slidingItem)">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+      
+            <ion-item>
+              <ion-avatar>
+                <ion-img [src]="barang.imageUrl"></ion-img>
+              </ion-avatar>
+              <ion-card-content>
+                <ion-card-title>{{ barang.merk + ' '  + barang.model }}</ion-card-title>
+                <ion-card-subtitle>Rp. {{ barang.harga }}</ion-card-subtitle>
+                <ion-card-subtitle>Tersedia: {{ barang.stok }}</ion-card-subtitle>
+              </ion-card-content>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

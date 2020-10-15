@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tambah Produk</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>URL Foto</ion-label>
+            </ion-col>
+            <ion-textarea type="text" formControlName="imageUrl"></ion-textarea>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="8">
+              <ion-label>Jenis</ion-label>
+            </ion-col>
+            <ion-select interface="popover" formControlName="jenis" [(ngModel)]="jenis">
+              <ion-select-option value="processor">Processor</ion-select-option>
+              <ion-select-option value="ram">RAM</ion-select-option>
+              <ion-select-option value="motherboard">Motherboard</ion-select-option>
+              <ion-select-option value="gpu">GPU</ion-select-option>
+            </ion-select>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>Merek</ion-label>
+            </ion-col>
+            <ion-input type="text" formControlName="merek"></ion-input>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>Model</ion-label>
+            </ion-col>
+            <ion-input type="text" formControlName="model"></ion-input>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>Harga</ion-label>
+            </ion-col>
+            <ion-col size="2">
+              <ion-label>Rp. </ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-input type="text" formControlName="harga"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>Stok</ion-label>
+            </ion-col>
+            <ion-input type="text" formControlName="stok"></ion-input>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      Detail Produk
+      <ion-item *ngIf="jenis == 'processor'">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              <ion-label>Base Clock</ion-label>
+              <ion-input type="number" formControlName="baseclock"></ion-input>
+            </ion-col>
+            <ion-col size="2">
+              <ion-col></ion-col>
+              <ion-input disabled>Ghz</ion-input>
+            </ion-col>
+            <ion-col size="4">
+              <ion-label>Boost Clock</ion-label>
+              <ion-input type="number" formControlName="boostclock"></ion-input>
+            </ion-col>
+            <ion-col size="2">
+              <ion-col></ion-col>
+              <ion-input disabled>Ghz</ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label>Core Count</ion-label>
+              <ion-input type="number" formControlName="corecount"></ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label>Thread Count</ion-label>
+              <ion-input type="number" formControlName="threadcount"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item *ngIf="jenis == 'ram'">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label>Ukuran</ion-label>
+              <ion-input type="text" formControlName="ukuran"></ion-input>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label>Speed</ion-label>
+              <ion-input type="text" formControlName="speed"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item *ngIf="jenis == 'motherboard'">
+        <ion-col size="6">
+          <ion-label>Chipset</ion-label>
+          <ion-input type="text" formControlName="chipset"></ion-input>
+        </ion-col>
+        <ion-col size="6">
+          <ion-label>For what processor brand</ion-label>
+          <ion-input type="text" formControlName="brand"></ion-input>
+        </ion-col>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="onSubmit()">Tambah Produk</ion-button>
+  </form>
+</ion-content>
