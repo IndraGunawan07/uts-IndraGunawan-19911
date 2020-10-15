@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Barang } from 'src/app/barang/barang.model';
 import { BarangService } from 'src/app/barang/barang.service';
 
@@ -19,7 +19,8 @@ export class EditPage implements OnInit {
     private barangService: BarangService,
     private router: Router,
     private toastController: ToastController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -111,6 +112,24 @@ export class EditPage implements OnInit {
     const {role, data} = await loading.onDidDismiss();
     console.log('Loading dismissed');
     this.presentToast();
+  }
+
+  async presentAlert(){
+    const alert = await this.alertCtrl.create({
+      header: 'Apakah anda yakin?',
+      message: 'Apakah anda ingin meng-update produk ini?',
+      buttons: [
+        {
+          text: 'Batal',
+          role: 'cancel'
+        },
+        {
+          text: 'Edit',
+          handler: () => this.onSubmit()
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }
