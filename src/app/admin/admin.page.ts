@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, IonItemSliding, LoadingController, ToastController } from '@ionic/angular';
 import { Barang } from '../barang/barang.model';
 import { BarangService } from '../barang/barang.service';
@@ -14,7 +15,8 @@ export class AdminPage implements OnInit {
     private barangService: BarangService,
     private alertCtrl: AlertController,
     private toastController: ToastController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,11 @@ export class AdminPage implements OnInit {
     this.barangService.deleteProduct(barang.merk);
     this.presentLoading();
     this.products = this.barangService.getAllProduct();
+  }
+
+  edit(barang: Barang, slidingItem: IonItemSliding){
+    slidingItem.close();
+    this.router.navigate(['/admin', barang.merk]);
   }
 
   async presentAlert(barang: Barang, slidingItem: IonItemSliding){
