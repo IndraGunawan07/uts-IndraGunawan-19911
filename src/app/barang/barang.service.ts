@@ -8,7 +8,7 @@ import { Barang } from './barang.model';
 export class BarangService {
   private product: Barang[] = [
     {
-      imageUrl: 'https://lh3.googleusercontent.com/proxy/WiwozB0Hdp-FoUqboNjGCKsoGmvDb4tT-I7gl3V5-rmfKEm50hi3rXeMq3L17LbCLwNNdgxIkJYt_HTUETLkTJZgRz3FGTrDJPWDBBD-LOnET3H2YaZ5ENJyN9r0Z25R',
+      imageUrl: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//90/MTA-3412872/intel_intel-core-i9-9900k-desktop-processor-_full02.jpg',
       jenis: 'Processor',
       merk: 'Intel',
       model: 'Core i9',
